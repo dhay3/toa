@@ -44,7 +44,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     timeout = args.timeout
     r = sniff(timeout=timeout, prn=lambda x: toa(x))
-    print(f"""--- Unique Original Source IP address statistics ---
+    print(f"""
 {r}
+--- Unique Original Source IP address statistics ---
 {uosip}
 """)
