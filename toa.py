@@ -21,10 +21,7 @@ def toa(p):
                     identifier = p.getlayer(IP).id
                     sport, dport = p.getlayer(TCP).sport, p.getlayer(TCP).dport
                     bdh = bd.hex()
-                    n1 = int(bdh[4:6], 16)
-                    n2 = int(bdh[6:8], 16)
-                    n3 = int(bdh[8:10], 16)
-                    n4 = int(bdh[10:12], 16)
+                    n1, n2, n3, n4 = int(bdh[4:6], 16), int(bdh[6:8], 16), int(bdh[8:10], 16), int(bdh[10:12], 16)
                     osip = f'{n1}.{n2}.{n3}.{n4}'
                     if ip_address(osip):
                         uosip.add(osip)
