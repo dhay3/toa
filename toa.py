@@ -32,7 +32,7 @@ def toa(p):
                         uosip.add(osip)
                         print(f'{rtime} {id:>5} {sip:>16}:{sport:<5} > {dip:>16}:{dport:<5} | {osip}')
                     else:
-                        p.show()
+                        p.hexraw()
 
 
 if __name__ == '__main__':
