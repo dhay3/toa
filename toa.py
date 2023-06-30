@@ -17,11 +17,9 @@ def toa(p):
                 if 0xfe == kind and bd:
                     atime = p.time
                     rtime = datetime.utcfromtimestamp(int(atime))
-                    sip = p.getlayer(IP).src
-                    dip = p.getlayer(IP).dst
-                    id = p.getlayer(IP).id
-                    sport = p.getlayer(TCP).sport
-                    dport = p.getlayer(TCP).dport
+                    sip, dip = p.getlayer(IP).src, p.getlayer(IP).dst
+                    identifier = p.getlayer(IP).id
+                    sport, dport = p.getlayer(TCP).sport, p.getlayer(TCP).dport
                     bdh = bd.hex()
                     n1 = int(bdh[4:6], 16)
                     n2 = int(bdh[6:8], 16)
