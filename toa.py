@@ -36,6 +36,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         prog='htoa',
         usage='%(prog) <TIMEOUT>',
-        add_help=False)
-    parser.add_argument('timeout', type=int)
-    r = sniff(timeout=parser.parse_args().timeout, prn=lambda x: toa(x))
+        add_help=True)
+    parser.add_argument('timeout', nargs='?', type=int, default=30)
+    args = parser.parse_args()
+    timeout = args.timeout
+    r = sniff(timeout=timeout, prn=lambda x: toa(x))
