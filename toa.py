@@ -4,6 +4,8 @@ from ipaddress import ip_address
 from datetime import datetime
 import argparse
 
+uosip = set()
+
 
 def toa(p):
     if p.haslayer(TCP):
@@ -27,7 +29,8 @@ def toa(p):
                     n4 = int(bdh[10:12], 16)
                     osip = f'{n1}.{n2}.{n3}.{n4}'
                     if ip_address(osip):
-                        print(f'{rtime} {id}\n{sip}:{sport} > {dip}:{dport} | {osip}')
+                        uosip.add(osip)
+                        print(f'{rtime} {id:>5} {sip:>16}:{sport:<5} > {dip:>16}:{dport:<5} | {osip}')
                     else:
                         p.show()
 
@@ -41,3 +44,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     timeout = args.timeout
     r = sniff(timeout=timeout, prn=lambda x: toa(x))
+    print(f"""--- Unique Original Source IP address statistics ---
+{r}
+{uosip}
+""")
