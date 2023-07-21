@@ -25,7 +25,7 @@ def toa(p):
                     osip = f'{n1}.{n2}.{n3}.{n4}'
                     if ip_address(osip):
                         uosip.add(osip)
-                        print(f'{rtime} {id:>5} {sip:>16}:{sport:<5} > {dip:>16}:{dport:<5} | {osip}')
+                        print(f'{rtime} {identifier:>5} {sip:>16}:{sport:<5} > {dip:>16}:{dport:<5} | {osip}')
                     else:
                         p.hexraw()
 
